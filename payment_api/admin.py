@@ -1,3 +1,9 @@
 from django.contrib import admin
 
-# Register your models here.
+from payment_api.models import Item
+
+
+@admin.register(Item)
+class ItemAdmin(admin.ModelAdmin):
+    list_display = ['name', 'description', 'price']
+
