@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.core.validators import MinValueValidator
 
 class Item(models.Model):
     name = models.CharField(
@@ -13,10 +13,9 @@ class Item(models.Model):
         blank=True,
     )
 
-    price = models.DecimalField(
+    price = models.IntegerField(
         'Цена',
-        max_digits=10,
-        decimal_places=2,
+        validators=[MinValueValidator(0)],
     )
 
     class Meta:
